@@ -12,7 +12,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::orderBy('created_at');
+        $departments = Department::all();
         return view('departments.index', ['departments' => $departments]);
     }
 
