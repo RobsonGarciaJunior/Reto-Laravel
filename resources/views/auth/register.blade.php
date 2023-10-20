@@ -43,8 +43,12 @@
                             <label for="departmentId" class="col-md-4 col-form-label text-md-end">{{ __('Id de Departamento') }}</label>
 
                             <div class="col-md-6">
-                                <input id="departmentId" type="text" class="form-control @error('departmentId') is-invalid @enderror" name="departmentId" value="{{ old('departmentId') }}" required autocomplete="departmentId">
-
+                                <!-- <input id="departmentId" type="text" class="form-control @error('departmentId') is-invalid @enderror" name="departmentId" value="{{ old('departmentId') }}" required autocomplete="departmentId"> -->
+                                <select class="form-select" name="department_id" id="department_id">
+                                    @foreach ($departments as $department)
+                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                    @endforeach
+                                </select>
                                 @error('departmentId')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

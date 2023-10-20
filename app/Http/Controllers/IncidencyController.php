@@ -26,7 +26,7 @@ class IncidencyController extends Controller
     {
         $categories = Category::all();
         $departments = Department::all();
-        return view('incidencies.create', ['categories' => $categories], ['departments' => $departments]);
+        return view('incidencies.create', ['categories' => $categories, 'departments' => $departments]);
     }
 
     /**
@@ -59,7 +59,9 @@ class IncidencyController extends Controller
      */
     public function edit(Incidency $incidency)
     {
-        return view('incidencies.edit', ['incidency' => $incidency]);
+        $categories = Category::all();
+        $departments = Department::all();
+        return view('incidencies.edit', ['incidency' => $incidency,'categories' => $categories,'departments' => $departments]);
     }
 
     /**
