@@ -31,13 +31,13 @@
                 <!--PERSONAL-->
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/departments">Departamentos</a>
+                        <a class="nav-link" href="{{route('departments.index')}}">Departamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="{{route('categories.index')}}">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="{{route('incidencies.index')}}">Incidencias</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
