@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\IncidencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,20 +25,28 @@ Route::resources([
     'departments' => DepartmentController::class,
 ]);
 
-use App\Http\Controllers\DepartmentController;
+Route::resources([
+    'categories' => CategoryController::class,
+]);
 
-#METODOS GET#
-Route::controller(DepartmentController::class)->group(function () {
-    Route::get('/departments', 'index')->name('departments.index');
-    Route::get('/departments/{department}', 'show')->name('departments.show');
-});
+Route::resources([
+    'incidencies' => IncidencyController::class,
+]);
 
-#METODOS POST#
 
-#METODOS PUT#
-
-#METODOS DELETE#
+// #METODOS GET#
+// Route::controller(DepartmentController::class)->group(function () {
+//     Route::get('/departments', 'index')->name('departments.index');
+//     Route::get('/departments/{department}', 'show')->name('departments.show');
+//     Route::get('/departments/create', 'create')->name('departments.create');
+// })->withoutMiddleware([Auth::class]);
 
 Auth::routes();
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::resources([
+//     'departments' => DepartmentController::class,
+//     ]);
+//     });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
