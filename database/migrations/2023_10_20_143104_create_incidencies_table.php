@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('text');
-            $table->string('estimatedTime');
+            $table->integer('estimatedTime');
             $table->unsignedBigInteger('categoryId');
             $table->foreign('categoryId')->references('id')->on('categories');
             $table->unsignedBigInteger('departmentId');

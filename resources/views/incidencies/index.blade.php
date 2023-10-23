@@ -14,7 +14,7 @@
         <p>Usuario: {{$incidency->user->name}}</p>
 
         <p>{{$incidency->text}}</p>
-        <p>Tiempo estimado {{$incidency->estimatedTime}}</p>
+        <p>Tiempo estimado {{$incidency->estimatedTime}} horas</p>
         Escrito el {{$incidency->created_at}}
     </li>
     @if(Auth::check())
