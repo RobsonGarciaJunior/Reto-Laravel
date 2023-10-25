@@ -23,13 +23,6 @@
                 @endforeach
             </select>
         </div>
-        <div class="form-group mb-3">
-            <select class="form-select" name="departmentId" id="departmentId">
-                @foreach ($departments as $department)
-                <option value="{{$department->id}}" @if($incidency->department->name == $department->name) selected @endif>{{$department->name}}</option>
-                @endforeach
-            </select>
-        </div>
         <button type="submit" class="btn btn-primary" name="">Editar</button>
     </form>
 </div>

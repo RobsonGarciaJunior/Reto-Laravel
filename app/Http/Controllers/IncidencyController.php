@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Department;
 use App\Models\Incidency;
 use Illuminate\Http\Request;
@@ -25,8 +26,7 @@ class IncidencyController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $departments = Department::all();
-        return view('incidencies.create', ['categories' => $categories, 'departments' => $departments]);
+        return view('incidencies.create', ['categories' => $categories]);
     }
 
     /**
@@ -39,7 +39,7 @@ class IncidencyController extends Controller
         $incidency->text = $request->text;
         $incidency->estimatedTime = $request->estimatedTime;
         $incidency->categoryId = $request->categoryId;
-        $incidency->departmentId = $request->departmentId;
+        $incidency->departmentId = Auth::user()->departmentId;
         $incidency->userId = Auth::user()->id;
 
         $incidency->save();
@@ -51,7 +51,8 @@ class IncidencyController extends Controller
      */
     public function show(Incidency $incidency)
     {
-        return view('incidencies.show', ['incidency' => $incidency]);
+        $comments = Comment::where('incidencyId', $incidency->id)->get();
+        return view('incidencies.show', ['incidency' => $incidency, 'comments'=> $comments]);
     }
 
     /**
@@ -60,8 +61,7 @@ class IncidencyController extends Controller
     public function edit(Incidency $incidency)
     {
         $categories = Category::all();
-        $departments = Department::all();
-        return view('incidencies.edit', ['incidency' => $incidency,'categories' => $categories,'departments' => $departments]);
+        return view('incidencies.edit', ['incidency' => $incidency,'categories' => $categories]);
     }
 
     /**
@@ -73,10 +73,11 @@ class IncidencyController extends Controller
         $incidency->text = $request->text;
         $incidency->estimatedTime = $request->estimatedTime;
         $incidency->categoryId = $request->categoryId;
-        $incidency->incidencyId = $request->incidencyId;
-        $incidency->userId = $request->userId;
+        $incidency->departmentId = Auth::user()->departmentId;
+        $incidency->userId = Auth::user()->id;
         $incidency->save();
-        return view('incidencies.show', ['incidency' => $incidency]);
+        $comments = Comment::where('incidencyId', $incidency->id)->get();
+        return view('incidencies.show', ['incidency' => $incidency, 'comments'=> $comments]);
     }
 
     /**
