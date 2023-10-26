@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Incidency;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -12,7 +13,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+        return view('comments.index', ['comments' => $comments]);
     }
 
     /**
@@ -20,7 +22,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('comments.create');
     }
 
     /**
@@ -28,7 +30,14 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new Comment();
+        $comment->text = $request->text;
+        $comment->usedTime = $request->usedTime;
+        $comment->save();
+
+        $incidency = Incidency::find($request->incidency_id);
+        $comments = Comment::all();
+        return redirect()->route('comments.index', ['comments' => $comments]);
     }
 
     /**
@@ -36,7 +45,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        return view('comments.show', ['comment' => $comment]);
     }
 
     /**
@@ -44,7 +53,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -52,7 +61,12 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->text = $request->text;
+        $comment->usedTime = $request->usedTime;
+        $comment->save();
+
+        $incidency = Incidency::find($request->incidency_id);
+        return view('incidencies.show', ['incidency' => $incidency]);
     }
 
     /**
@@ -60,6 +74,9 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $incidency = Incidency::find($comment->incidency_id);
+        $comment->delete();
+        //TODO MIRAR QUE OCURRE Y PQ AL BORRAR ME DA ERROR AL VOLVER A LA INCIDENCIA
+        return redirect()->route('incidencies.show', ['incidency' => $incidency])->with('success', 'Comment deleted successfully');
     }
 }

@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('incidencyId');
-            $table->foreign('incidencyId')->references('id')->on('incidencies');
             $table->string('text');
-            $table->string('usedTime');
+            $table->integer('usedTime');
+            $table->unsignedBigInteger('incidencyId');
+            $table->foreign('incidencyId')->references('id')->on('incidencies')->onDelete('cascade');
+            $table->unsignedBigInteger('userId');
+            $table->foreign('userId')->references('id')->on('users');
             $table->timestamps();
         });
     }
