@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartmentController;
@@ -17,9 +18,8 @@ use App\Http\Controllers\IncidencyController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\DepartmentController::class, 'index'])->name('home');
 
 Route::resources([
     'departments' => DepartmentController::class,
@@ -31,6 +31,10 @@ Route::resources([
 
 Route::resources([
     'incidencies' => IncidencyController::class,
+]);
+
+Route::resources([
+    'comments' => CommentController::class,
 ]);
 
 
@@ -49,4 +53,3 @@ Auth::routes();
 //     ]);
 //     });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
