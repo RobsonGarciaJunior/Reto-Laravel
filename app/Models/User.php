@@ -46,13 +46,19 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    //BELONG
     public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'departmentId');
     }
 
+    //HAS MANY
     public function indicencies(): HasMany
     {
         return $this->hasMany(Incidency::class, 'userId');
+    }
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'userId');
     }
 }

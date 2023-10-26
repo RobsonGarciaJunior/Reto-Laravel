@@ -16,7 +16,7 @@ class IncidencyController extends Controller
      */
     public function index()
     {
-        $incidencies = Incidency::all();
+        $incidencies = Incidency::orderBy('created_at', 'desc')->get();
         return view('incidencies.index', ['incidencies' => $incidencies]);
     }
 
@@ -76,6 +76,7 @@ class IncidencyController extends Controller
         $incidency->departmentId = Auth::user()->departmentId;
         $incidency->userId = Auth::user()->id;
         $incidency->save();
+        
         $comments = Comment::where('incidencyId', $incidency->id)->get();
         return view('incidencies.show', ['incidency' => $incidency, 'comments'=> $comments]);
     }

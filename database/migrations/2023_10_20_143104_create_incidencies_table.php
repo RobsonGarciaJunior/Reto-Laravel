@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('text');
             $table->integer('estimatedTime');
-            $table->unsignedBigInteger('categoryId');
-            $table->foreign('categoryId')->references('id')->on('categories');
+            $table->unsignedBigInteger('categoryId')->nullable();
+            $table->foreign('categoryId')->references('id')->on('categories')->onDelete('set null');
             $table->unsignedBigInteger('departmentId');
             $table->foreign('departmentId')->references('id')->on('departments');
             $table->unsignedBigInteger('userId');
