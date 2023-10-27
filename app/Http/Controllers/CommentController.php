@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Incidency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -33,11 +34,13 @@ class CommentController extends Controller
         $comment = new Comment();
         $comment->text = $request->text;
         $comment->usedTime = $request->usedTime;
+        $comment->incidencyId = $request->incidencyId;
+        $comment->userId = Auth::user()->id;
         $comment->save();
 
-        $incidency = Incidency::find($request->incidency_id);
-        $comments = Comment::all();
-        return redirect()->route('comments.index', ['comments' => $comments]);
+        $incidency = Incidency::find($request->incidencyId);
+        $comments = Comment::where('incidencyId', $request->incidencyId)->get();
+        return redirect()->route('incidencies.show', ['incidency' => $incidency, 'comments'=> $comments]);
     }
 
     /**
@@ -65,8 +68,9 @@ class CommentController extends Controller
         $comment->usedTime = $request->usedTime;
         $comment->save();
 
-        $incidency = Incidency::find($request->incidency_id);
-        return view('incidencies.show', ['incidency' => $incidency]);
+        $incidency = Incidency::find($comment->incidencyId);
+        $comments = Comment::where('incidencyId', $incidency->id)->get();
+        return view('incidencies.show', ['incidency' => $incidency, 'comments'=> $comments]);
     }
 
     /**
@@ -74,9 +78,9 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        $incidency = Incidency::find($comment->incidency_id);
-        $comment->delete();
-        //TODO MIRAR QUE OCURRE Y PQ AL BORRAR ME DA ERROR AL VOLVER A LA INCIDENCIA
-        return redirect()->route('incidencies.show', ['incidency' => $incidency])->with('success', 'Comment deleted successfully');
+        $incidency = Incidency::find($comment->incidencyId);
+        $comments = Comment::where('incidencyId', $comment->incidencyId)->get();
+        $comment->delete();   
+        return redirect()->route('incidencies.show', ['incidency' => $incidency, 'comments'=> $comments])->with('success', 'Comment deleted successfully');
     }
 }

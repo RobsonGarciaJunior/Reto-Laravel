@@ -6,7 +6,7 @@
         @method('PUT')
 
         <div class="form-group mb-3">
-            <label for="newName" class="form-label">Nuevo Nombre del Departamento</label>
+            <label for="newName" class="form-label">Comentario</label>
             <input type="text" class="form-control" id="text" name="text" value="{{$comment->text}}" required/>
             <input type="text" class="form-control" id="usedTime" name="usedTime" value="{{$comment->usedTime}}" required/>
         </div>

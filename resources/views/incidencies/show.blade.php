@@ -2,6 +2,7 @@
 @section('content')
 <h2>{{$incidency->title}}</h2>
 <p>{{$incidency->text}}</p>
+<p>Tiempo Estimado: {{$incidency->estimatedTime}}h</p>
 
 
 <h6>COMENTARIOS</h6>
@@ -15,6 +16,7 @@
                     <li>
                         <a href="{{route('comments.show', $comment)}}">{{$comment->id}}</a>.
                         <p>{{$comment->text}}</p>
+                        <p>Tiempo usado: {{$comment->usedTime}}h</p>
                         Escrito el {{$comment->created_at}}
                         <p>Por el {{$comment->user->name}}</p>
                     </li>
@@ -41,34 +43,35 @@
     @endif
     @if(Auth::check())
         @if(Auth::user()->departmentId == $incidency->departmentId)
-        <section >
-            <div class="container my-5 py-5">
-                <div class="row d-flex justify-content-center">
-                <div class="col-md-12 col-lg-10 col-xl-8">
-                    <div class="card">
-                    <div class="card-body">
-                    </div>
-                    <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-                        <div class="d-flex flex-start w-100">
-                            <div class="form-outline w-100">
-                                <form class="mt-2" name="create_platform" action="{{route('comments.store')}}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <textarea class="form-control" id="text" name="text" rows="4" style="background: #fff;" placeholder="Escribe algo..."></textarea>
-                                <input class="form-control" id="usedTime" name="usedTime" type="number"></input>
+            <section >
+                <div class="container my-5 py-5">
+                    <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10 col-xl-8">
+                        <div class="card">
+                        <div class="card-body">
+                        </div>
+                        <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                            <div class="d-flex flex-start w-100">
+                                <div class="form-outline w-100">
+                                    <form class="mt-2" name="create_platform" action="{{route('comments.store')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <textarea class="form-control" id="text" name="text" rows="4" style="background: #fff;" placeholder="Escribe algo..."></textarea>
+                                    <input class="form-control" id="usedTime" name="usedTime" type="number"></input>
+                                    <input class="form-control" id="incidencyId" name="incidencyId" value="{{$incidency->id}}" type="hidden"></input>
+                                </div>
                             </div>
+                            <div class="float-end mt-2 pt-1">
+                                <button type="submit" class="btn btn-primary btn-sm">Comentar</button>
+                            </div>
+                            </form>
+                            <!--<button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>-->
+                            
                         </div>
-                        <div class="float-end mt-2 pt-1">
-                            <button type="submit" class="btn btn-primary btn-sm">Comentar</button>
                         </div>
-                        </form>
-                        <!--<button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>-->
-                        
                     </div>
                     </div>
                 </div>
-                </div>
-            </div>
-</section>
+            </section>
         @endif
     @endif
 @endsection
