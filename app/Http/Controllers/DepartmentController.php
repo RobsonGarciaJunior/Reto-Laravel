@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class DepartmentController extends Controller
 {
@@ -56,7 +57,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        $department->name = $request->newName;
+        $department->name = $request->name;
         $department->save();
         return view('departments.show', ['department' => $department]);
     }
