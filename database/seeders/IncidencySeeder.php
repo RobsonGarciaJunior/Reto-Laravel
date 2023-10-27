@@ -27,7 +27,7 @@ class IncidencySeeder extends Seeder
             'text' => 'Han habido varios problemas con esto relacionado a la incidencia2',
             'estimatedTime' => 1,
             'categoryId' => 4,
-            'departmentId' => 1,
+            'departmentId' => 3,
             'userId' => 2,
             'created_at' => now(),
         ]);
@@ -36,7 +36,7 @@ class IncidencySeeder extends Seeder
             'text' => 'Han habido varios problemas con esto relacionado a la incidencia3',
             'estimatedTime' => 5,
             'categoryId' => 2,
-            'departmentId' => 3,
+            'departmentId' => 1,
             'userId' => 1,
             'created_at' => now(),
         ]);
@@ -45,7 +45,7 @@ class IncidencySeeder extends Seeder
             'text' => 'Han habido varios problemas con esto relacionado a la incidencia4',
             'estimatedTime' => 4,
             'categoryId' => 2,
-            'departmentId' => 4,
+            'departmentId' => 1,
             'userId' => 1,
             'created_at' => now(),
         ]);
