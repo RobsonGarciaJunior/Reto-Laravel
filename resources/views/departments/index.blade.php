@@ -1,45 +1,46 @@
 @extends('layouts.app')
 @section('content')
 
-@if(Auth::check())
-    <a class="btn btn-primary btn-sm" href="{{route('departments.create')}}" role="button">Crear</a>
-@endif
-    
-<ul class="list-group list-group-flush" style="margin: 2%;">
-    {{--esto es un comentario: recorremos el listado de departamentos--}}
-    @foreach ($departments as $department)
-    {{-- visualizamos los atributos del objeto --}}
-    <li>
-        <a href="{{route('departments.show', $department)}}">{{$department->name}}</a>.
-        Escrito el {{$department->created_at}}
-        <h5>Incidencias</h5>
-        
-        @if($department->incidencies()->exists())
-            @for ($i = 0; $i < 5; $i++)
-                <ul>
-                    @if(isset($department->incidencies[$i]))
-                        <li>
-                            <p>{{$department->incidencies[$i]->title}}</p>
-                        </li>
-                    @endif
-                </ul>
-            @endfor
-        @endif
-    </li>
+<div class = "container">
+    <h1>Departamentos</h1>
+    @if(Auth::check())
+        <a class="btn btn-primary btn-sm" href="{{route('departments.create')}}" role="button">Crear</a>
+    @endif
+    <ul class="list-group">
+        {{--esto es un comentario: recorremos el listado de departamentos--}}
+        @foreach ($departments as $department)
+        {{-- visualizamos los atributos del objeto --}}
+        <li class="list-group-item">
+            <h3 class = "list-group-item-heading"><a href="{{route('departments.show', $department)}}">{{$department->name}}</a></h3>
+            <p>Escrito el {{$department->created_at}}</p>
+            @if($department->incidencies()->exists())
+            <h5>Incidencias</h5>
+                @for ($i = 0; $i < 5; $i++)
+                    <ul>
+                        @if(isset($department->incidencies[$i]))
+                            <li>
+                                <p>{{$department->incidencies[$i]->title}}</p>
+                            </li>
+                        @endif
+                    </ul>
+                @endfor
+            @endif
+            @if(Auth::check())
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <a class="btn btn-secondary btn-sm" href="{{route('departments.edit',$department)}}" role="button">Editar</a>
 
-        @if(Auth::check())
-        <div style="display: flex;">
-        <a class="btn btn-warning btn-sm" href="{{route('departments.edit',$department)}}" role="button">Editar</a>
-        
-        
-        <form action="{{route('departments.destroy',$department)}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Delete
-            </button>
-        </form>
-        </div>
-        @endif
-    @endforeach
-</ul>
+                @if(!$department->incidencies()->exists())
+                <form action="{{route('departments.destroy',$department)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Delete
+                    </button>
+                </form>
+                </div>
+                @endif
+            @endif
+        </li>    
+        @endforeach
+    </ul>
+</div>
 @endsection
