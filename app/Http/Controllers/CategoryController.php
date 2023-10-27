@@ -56,7 +56,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->name = $request->newName;
+        $category->name = $request->name;
         $category->save();
         return view('categories.show', ['category' => $category]);
     }
