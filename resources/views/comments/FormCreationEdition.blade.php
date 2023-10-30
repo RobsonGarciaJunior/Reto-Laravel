@@ -8,25 +8,35 @@
                     <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
                         <div class="d-flex flex-start w-100">
                             <div class="form-outline w-100">
-                                <form class="mt-2" name="create_platform" action="{{route('comments.store')}}" method="POST" enctype="multipart/form-data">
+                                <form class="mt-2" name="create_platform" 
+                                @if(Route::currentRouteName() == 'comments.edit')
+                                    action="{{route('comments.update', $comment)}}"
+                                @else
+                                    action="{{route('comments.store')}}"
+                                @endif
+                                 method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <textarea required class="form-control" id="text" name="text" rows="4" style="background: #fff;" placeholder="Escribe algo..."
-                                    @if(isset($comment))
-                                    value= "{{$comment->text}}"
-                                    @endif></textarea>
+                                    @if(Route::currentRouteName() == 'comments.edit')
+                                        @method('PUT')
+                                    @endif
+                                    <textarea required class="form-control" id="text" name="text" rows="4" style="background: #fff;" placeholder="Escribe algo...">@if(Route::currentRouteName() == 'comments.edit'){{$comment->text}}@endif</textarea>
                                     <input class="form-control" id="usedTime" name="usedTime" type="number" required
-                                    @if(isset($comment))
-                                    value= "{{$comment->usedTime}}"
+                                    @if(Route::currentRouteName() == 'comments.edit')
+                                        value="{{$comment->usedTime}}"
                                     @endif></input>
+                                    @if(Route::currentRouteName() != 'comments.edit')
+                                    <input class="form-control" id="incidencyId" name="incidencyId" value="{{$incidency->id}}"
+                                    type="hidden"></input>
+                                    @endif
                             </div>
                         </div>
                         <div class="float-end mt-2 pt-1">
                             <button type="submit" class="btn btn-primary btn-sm">
-                                @if(isset($comment))
-                                    Editar
-                                @else
-                                    Comentar    
-                                @endif
+                            @if(Route::currentRouteName() == 'comments.edit')
+                                Editar
+                            @else
+                                Comentar
+                            @endif
                                 </button>
                         </div>
                         </form>
