@@ -52,7 +52,7 @@ class CommentSeeder extends Seeder
             'text' => 'Esto va en la incidencia 1, Como podria hacer...',
             'usedTime' => 1,
             'incidencyId' => 1,
-            'userId' => 3,
+            'userId' => 4,
             'created_at' => now(),
         ]);
     }
