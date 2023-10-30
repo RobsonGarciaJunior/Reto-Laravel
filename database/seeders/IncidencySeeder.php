@@ -18,8 +18,10 @@ class IncidencySeeder extends Seeder
             'text' => 'Han habido varios problemas con esto relacionado a la incidencia1',
             'estimatedTime' => 2,
             'categoryId' => 3,
-            'departmentId' => 2,
+            'departmentId' => 1,
             'userId' => 3,
+            'priorityId' => 1,
+            'stateId' => 1,
             'created_at' => now(),
         ]);
         DB::table('incidencies')->insert([
@@ -29,6 +31,8 @@ class IncidencySeeder extends Seeder
             'categoryId' => 4,
             'departmentId' => 3,
             'userId' => 2,
+            'priorityId' => 3,
+            'stateId' => 1,
             'created_at' => now(),
         ]);
         DB::table('incidencies')->insert([
@@ -38,6 +42,8 @@ class IncidencySeeder extends Seeder
             'categoryId' => 2,
             'departmentId' => 1,
             'userId' => 1,
+            'priorityId' => 1,
+            'stateId' => 2,
             'created_at' => now(),
         ]);
         DB::table('incidencies')->insert([
@@ -47,6 +53,8 @@ class IncidencySeeder extends Seeder
             'categoryId' => 2,
             'departmentId' => 1,
             'userId' => 1,
+            'priorityId' => 2,
+            'stateId' => 3,
             'created_at' => now(),
         ]);
     }
