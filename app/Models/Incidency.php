@@ -27,6 +27,16 @@ class Incidency extends Model
         return $this->belongsTo(User::class, 'userId');
     }
 
+    public function Priority(): BelongsTo
+    {
+        return $this->belongsTo(Priority::class, 'priorityId');
+    }
+
+    public function State(): BelongsTo
+    {
+        return $this->belongsTo(State::class, 'stateId');
+    }
+
     //HAS MANY
     public function comments(): HasMany
     {

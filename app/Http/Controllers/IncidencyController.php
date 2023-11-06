@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Department;
 use App\Models\Incidency;
+use App\Models\Priority;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,8 @@ class IncidencyController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('incidencies.create', ['categories' => $categories]);
+        $priorities = Priority::all();
+        return view('incidencies.create', ['categories' => $categories, 'priorities' => $priorities]);
     }
 
     /**
@@ -52,7 +54,7 @@ class IncidencyController extends Controller
     public function show(Incidency $incidency)
     {
         $comments = Comment::where('incidencyId', $incidency->id)->get();
-        return view('incidencies.show', ['incidency' => $incidency, 'comments'=> $comments]);
+        return view('incidencies.show', ['incidency' => $incidency, 'comments' => $comments]);
     }
 
     /**
@@ -61,7 +63,8 @@ class IncidencyController extends Controller
     public function edit(Incidency $incidency)
     {
         $categories = Category::all();
-        return view('incidencies.edit', ['incidency' => $incidency,'categories' => $categories]);
+        $priorities = Priority::all();
+        return view('incidencies.edit', ['incidency' => $incidency, 'categories' => $categories, 'priorities' => $priorities]);
     }
 
     /**
@@ -76,9 +79,9 @@ class IncidencyController extends Controller
         $incidency->departmentId = Auth::user()->departmentId;
         $incidency->userId = Auth::user()->id;
         $incidency->save();
-        
+
         $comments = Comment::where('incidencyId', $incidency->id)->get();
-        return view('incidencies.show', ['incidency' => $incidency, 'comments'=> $comments]);
+        return view('incidencies.show', ['incidency' => $incidency, 'comments' => $comments]);
     }
 
     /**

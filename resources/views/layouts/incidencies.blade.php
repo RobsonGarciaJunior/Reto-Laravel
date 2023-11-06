@@ -16,10 +16,15 @@
             @endif
             <p>{{$incidency->department->name}}</p>
             <p>Usuario: {{$incidency->user->name}}</p>
-
             <p>{{$incidency->text}}</p>
             <p>Tiempo estimado {{$incidency->estimatedTime}} horas</p>
-            Escrito el {{$incidency->created_at}}
+            @if($incidency->priority == null)
+            PRIORIDAD --
+            @else
+            PRIORIDAD {{$incidency->priority->name}}
+            @endif
+            <p>ESTADO {{$incidency->state->name}}</p>
+            <p>Escrito el {{$incidency->created_at}}</p>
             @if(Auth::check())
                 @if(Auth::user()->id == $incidency->user->id)
                     <div>

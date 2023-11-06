@@ -40,6 +40,9 @@
                         <a class="nav-link" href="{{route('incidencies.index')}}">Incidencias</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('priorities.index')}}">Prioridades</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                 </ul>

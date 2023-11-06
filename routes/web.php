@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\IncidencyController;
+use App\Http\Controllers\PriorityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resources([
         'comments' => CommentController::class,
     ]);
+
+    Route::resources([
+        'priorities' => PriorityController::class,
+    ]);
 });
 
 // #METODOS GET#
@@ -59,5 +64,10 @@ Route::controller(CategoryController::class)->group(function () {
 Route::controller(IncidencyController::class)->group(function () {  
     Route::get('/incidencies', 'index')->name('incidencies.index');
 Route::get('/incidencies/{incidency}', 'show')->name('incidencies.show');
+})->withoutMiddleware([Auth::class]);
+
+Route::controller(PriorityController::class)->group(function () {  
+    Route::get('/priorities', 'index')->name('priorities.index');
+Route::get('/priorities/{priority}', 'show')->name('priorities.show');
 })->withoutMiddleware([Auth::class]);
 

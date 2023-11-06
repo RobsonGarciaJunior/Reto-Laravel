@@ -47,6 +47,20 @@
                 @endforeach
             </select>
         </div>
+        <div>
+            <select class="form-select" name="priorityId" id="priorityId">
+                @foreach ($priorities as $priority)
+                <option value="{{$priority->id}}"
+                    @if(isset($incidency))
+                        @if($incidency->priority->name == $priority->name) 
+                            selected 
+                        @endif
+                    @endif>
+                {{$priority->name}}
+                </option>
+                @endforeach
+            </select>
+        </div>
 
         <button type="submit" class="btn btn-primary" name="">
             @if(isset($incidency))
