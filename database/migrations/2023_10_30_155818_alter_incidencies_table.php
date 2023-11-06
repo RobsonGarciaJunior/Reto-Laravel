@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::table('incidencies', function (Blueprint $table) {
             $table->unsignedBigInteger('priorityId')->nullable();
             $table->foreign('priorityId')->references('id')->on('priorities')->onDelete('set null');
-            $table->unsignedBigInteger('stateId');
-            $table->foreign('stateId')->references('id')->on('states');
+            $table->unsignedBigInteger('stateId')->nullable();
+            $table->foreign('stateId')->references('id')->on('states')->onDelete('set null');
         });
     }
 

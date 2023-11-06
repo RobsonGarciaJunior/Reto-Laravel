@@ -9,21 +9,33 @@
         {{-- visualizamos los atributos del objeto --}}
         <li class="list-group-item">
             <h3 class = "list-group-item-heading"><a href="{{route('incidencies.show', $incidency)}}">{{$incidency->title}}</a></h3>
+            <p>
             @if($incidency->category == null)
             CATEGORIA --
             @else
             CATEGORIA {{$incidency->category->name}}
             @endif
+            </p>
             <p>{{$incidency->department->name}}</p>
             <p>Usuario: {{$incidency->user->name}}</p>
             <p>{{$incidency->text}}</p>
             <p>Tiempo estimado {{$incidency->estimatedTime}} horas</p>
+           
+            <p>
             @if($incidency->priority == null)
-            PRIORIDAD --
+                PRIORIDAD --
             @else
-            PRIORIDAD {{$incidency->priority->name}}
+                PRIORIDAD {{$incidency->priority->name}}
             @endif
-            <p>ESTADO {{$incidency->state->name}}</p>
+            </p>
+            <p>
+            @if($incidency->state == null)
+                ESTADO --
+            @else
+                ESTADO {{$incidency->state->name}}
+            @endif
+            </p>
+           
             <p>Escrito el {{$incidency->created_at}}</p>
             @if(Auth::check())
                 @if(Auth::user()->id == $incidency->user->id)

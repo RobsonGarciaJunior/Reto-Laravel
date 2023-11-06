@@ -43,6 +43,9 @@
                         <a class="nav-link" href="{{route('priorities.index')}}">Prioridades</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('states.index')}}">Estados</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                 </ul>

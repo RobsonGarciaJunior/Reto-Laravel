@@ -32,6 +32,7 @@
             @endif/>
         </div>
         <div class="form-group mb-3">
+            <label for="name" class="form-label">Categoria</label>
             <select class="form-select" name="categoryId" id="categoryId">
                 @foreach ($categories as $category)
                 <!-- Comprobamos que la incidencia no sea nula para saber si estamos en editar o crear -->
@@ -48,6 +49,7 @@
             </select>
         </div>
         <div>
+            <label for="name" class="form-label">Prioridad</label>
             <select class="form-select" name="priorityId" id="priorityId">
                 @foreach ($priorities as $priority)
                 <option value="{{$priority->id}}"
@@ -61,7 +63,21 @@
                 @endforeach
             </select>
         </div>
-
+        <div>
+            <label for="name" class="form-label">Estados</label>
+            <select class="form-select" name="stateId" id="stateId">
+                @foreach ($states as $state)
+                <option value="{{$state->id}}"
+                    @if(isset($incidency))
+                        @if($incidency->state->name == $state->name) 
+                            selected 
+                        @endif
+                    @endif>
+                {{$state->name}}
+                </option>
+                @endforeach
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary" name="">
             @if(isset($incidency))
                 Editar

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartmentController;
@@ -48,6 +49,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resources([
         'priorities' => PriorityController::class,
     ]);
+
+    Route::resources([
+        'states' => StateController::class,
+    ]);
 });
 
 // #METODOS GET#
@@ -69,5 +74,10 @@ Route::get('/incidencies/{incidency}', 'show')->name('incidencies.show');
 Route::controller(PriorityController::class)->group(function () {  
     Route::get('/priorities', 'index')->name('priorities.index');
 Route::get('/priorities/{priority}', 'show')->name('priorities.show');
+})->withoutMiddleware([Auth::class]);
+
+Route::controller(StateController::class)->group(function () {  
+    Route::get('/states', 'index')->name('states.index');
+Route::get('/states/{state}', 'show')->name('states.show');
 })->withoutMiddleware([Auth::class]);
 

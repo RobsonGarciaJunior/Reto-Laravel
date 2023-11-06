@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comment;
-use App\Models\Department;
 use App\Models\Incidency;
 use App\Models\Priority;
+use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,8 +27,9 @@ class IncidencyController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $priorities = Priority::all();
-        return view('incidencies.create', ['categories' => $categories, 'priorities' => $priorities]);
+        $priorities = Priority::orderBy('order','desc')->get();
+        $states = State::all();
+        return view('incidencies.create', ['categories' => $categories, 'priorities' => $priorities, 'states' => $states]);
     }
 
     /**
@@ -41,6 +42,8 @@ class IncidencyController extends Controller
         $incidency->text = $request->text;
         $incidency->estimatedTime = $request->estimatedTime;
         $incidency->categoryId = $request->categoryId;
+        $incidency->priorityId = $request->priorityId;
+        $incidency->stateId = $request->stateId;
         $incidency->departmentId = Auth::user()->departmentId;
         $incidency->userId = Auth::user()->id;
 
@@ -63,8 +66,9 @@ class IncidencyController extends Controller
     public function edit(Incidency $incidency)
     {
         $categories = Category::all();
-        $priorities = Priority::all();
-        return view('incidencies.edit', ['incidency' => $incidency, 'categories' => $categories, 'priorities' => $priorities]);
+        $priorities = Priority::orderBy('order','desc')->get();
+        $states = State::all();
+        return view('incidencies.edit', ['incidency' => $incidency, 'categories' => $categories, 'priorities' => $priorities, 'states' => $states]);
     }
 
     /**
