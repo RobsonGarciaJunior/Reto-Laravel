@@ -2,6 +2,9 @@
 @section('content')
 
 <div class = "container">
+
+    
+
     <h1>Estados</h1>
     @if(Auth::check())
         <a class="btn btn-primary btn-sm" href="{{route('states.create')}}" role="button">Crear</a>
@@ -9,21 +12,14 @@
     <ul class="list-group">
         {{--esto es un comentario: recorremos el listado de departamentos--}}
         @foreach ($states as $state)
+
+
         {{-- visualizamos los atributos del objeto --}}
         <li class="list-group-item">
             <h3 class = "list-group-item-heading"><a href="{{route('states.show', $state)}}">{{$state->name}}</a></h3>
             <p>Escrito el {{$state->created_at}}</p>
             @if($state->incidencies()->exists())
-            <h5>Incidencias</h5>
-                @for ($i = 0; $i < 5; $i++)
-                    <ul>
-                        @if(isset($state->incidencies[$i]))
-                            <li>
-                                <p>{{$state->incidencies[$i]->title}}</p>
-                            </li>
-                        @endif
-                    </ul>
-                @endfor
+            @include('layouts.incidencyList')
             @endif
             @if(Auth::check())
             <div class="btn-group btn-group-toggle" data-toggle="buttons">

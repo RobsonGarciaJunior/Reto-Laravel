@@ -14,16 +14,7 @@
             <h3 class = "list-group-item-heading"><a href="{{route('departments.show', $department)}}">{{$department->name}}</a></h3>
             <p>Escrito el {{$department->created_at}}</p>
             @if($department->incidencies()->exists())
-            <h5>Incidencias</h5>
-                @for ($i = 0; $i < 5; $i++)
-                    <ul>
-                        @if(isset($department->incidencies[$i]))
-                            <li>
-                                <p>{{$department->incidencies[$i]->title}}</p>
-                            </li>
-                        @endif
-                    </ul>
-                @endfor
+            @include('layouts.incidencyList')
             @endif
             @if(Auth::check())
             <div class="btn-group btn-group-toggle" data-toggle="buttons">

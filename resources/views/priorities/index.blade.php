@@ -15,16 +15,7 @@
             {{$priority->order}}
             <p>Escrito el {{$priority->created_at}}</p>
             @if($priority->incidencies()->exists())
-            <h5>Incidencias</h5>
-                @for ($i = 0; $i < 5; $i++)
-                    <ul>
-                        @if(isset($priority->incidencies[$i]))
-                            <li>
-                                <p>{{$priority->incidencies[$i]->title}}</p>
-                            </li>
-                        @endif
-                    </ul>
-                @endfor
+            @include('layouts.incidencyList')
             @endif
             @if(Auth::check())
             <div class="btn-group btn-group-toggle" data-toggle="buttons">

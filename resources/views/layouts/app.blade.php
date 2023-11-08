@@ -34,7 +34,7 @@
                         <a class="nav-link" href="{{route('departments.index')}}">Departamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('categories.index')}}">Categories</a>
+                        <a class="nav-link" href="{{route('categories.index')}}">Categorias</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('incidencies.index')}}">Incidencias</a>

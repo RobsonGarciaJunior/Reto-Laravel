@@ -35,7 +35,7 @@
         </div>
     @endif
 @else
-    <p>Necesitas estar logueado para ver lo comentarios!</p>
+    <p style="text-align: center;">Necesitas estar logueado para ver lo comentarios!</p>
 @endif
 @if(Auth::check())
     @if(Auth::user()->departmentId == $incidency->departmentId)
