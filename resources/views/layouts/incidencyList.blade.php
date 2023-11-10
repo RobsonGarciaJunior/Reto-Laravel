@@ -1,24 +1,10 @@
 <h5>Incidencias</h5>
-@for ($i = 0; $i < 5; $i++) <ul>
-    @if(isset($department->incidencies[$i]))
+@for ($i = 0; $i < 5; $i++)
+<ul>
+    @if(isset($items->incidencies[$i]))
         <li>
-            <a href="{{route('incidencies.show', $department->incidencies[$i])}}">{{$department->incidencies[$i]->title}}</a>
+            <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{route('incidencies.show', $item->incidencies[$i])}}">{{$item->incidencies[$i]->title}}</a>
         </li>
     @endif
-    @if(isset($category->incidencies[$i]))
-        <li>
-            <a href="{{route('incidencies.show', $category->incidencies[$i])}}">{{$category->incidencies[$i]->title}}</a>
-        </li>
-    @endif
-    @if(isset($priority->incidencies[$i]))
-        <li>
-            <a href="{{route('incidencies.show', $priority->incidencies[$i])}}">{{$priority->incidencies[$i]->title}}</a>
-        </li>
-    @endif
-    @if(isset($state->incidencies[$i]))
-        <li>
-            <a href="{{route('incidencies.show', $state->incidencies[$i])}}">{{$state->incidencies[$i]->title}}</a>
-        </li>
-    @endif
-    </ul>
+</ul>
  @endfor
