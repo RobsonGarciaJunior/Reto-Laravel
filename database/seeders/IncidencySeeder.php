@@ -18,7 +18,7 @@ class IncidencySeeder extends Seeder
             'text' => 'Han habido varios problemas con esto relacionado a la incidencia1',
             'estimatedTime' => 2,
             'categoryId' => 3,
-            'departmentId' => 1,
+            'departmentId' => 2,
             'userId' => 3,
             'priorityId' => 1,
             'stateId' => 1,
