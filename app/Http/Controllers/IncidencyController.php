@@ -93,6 +93,7 @@ class IncidencyController extends Controller
      */
     public function destroy(Incidency $incidency)
     {
+        #TODO mejorar que el redirect te devuelva al home si vienes de ahi
         $incidency->delete();
         return redirect()->route('incidencies.index')->with('success', 'Incidency deleted successfully');
     }

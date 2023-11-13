@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts.incidencies')
+@include('incidencies.personalLayouts.incidencies')
 @endsection

@@ -8,7 +8,9 @@
         @if(Auth::check())
         <div class="btn-toolbar" style="display: inline; justify-content: space-between;" data-toggle="buttons">    
             <a class="btn btn-primary btn-sm" href="{{route('incidencies.create')}}" role="button">Crear</a>
+            @if(Route::currentRouteName() == 'incidencies.index')
             <a class="btn btn-primary btn-sm" href="{{route('home')}}" role="button">Mis incidencias</a>
+            @endif
         </div>
         @endif
     </span>

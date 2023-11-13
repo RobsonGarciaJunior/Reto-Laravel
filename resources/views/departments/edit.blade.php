@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-@include('departments.FormCreationEdition')
+@include('departments.personalLayouts.FormCreationEdition')
 @endsection

@@ -30,21 +30,48 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!--PERSONAL-->
+                <!--Aqui me gustaria pasar también el nombre por parametro para setear el nav-link active donde deberia
+                pero como es la creada automaticamente con Blade prefiero no modificar-->
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('departments.index')}}">Departamentos</a>
+                        <a @if(Route::currentRouteName() == 'departments.index')
+                            class="nav-link active"
+                        @else
+                            class="nav-link"
+                        @endif 
+                        href="{{route('departments.index')}}">Departamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('categories.index')}}">Categorias</a>
+                        <a @if(Route::currentRouteName() == 'categories.index')
+                            class="nav-link active"
+                        @else
+                            class="nav-link"
+                        @endif 
+                        href="{{route('categories.index')}}">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('incidencies.index')}}">Incidencias</a>
+                        <a @if(Route::currentRouteName() == 'incidencies.index')
+                            class="nav-link active"
+                        @else
+                            class="nav-link"
+                        @endif  
+                        href="{{route('incidencies.index')}}">Incidencias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('priorities.index')}}">Prioridades</a>
+                        <a @if(Route::currentRouteName() == 'priorities.index')
+                            class="nav-link active"
+                        @else
+                            class="nav-link"
+                        @endif 
+                        href="{{route('priorities.index')}}">Prioridades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('states.index')}}">Estados</a>
+                        <a @if(Route::currentRouteName() == 'states.index')
+                            class="nav-link active"
+                        @else
+                            class="nav-link"
+                        @endif 
+                        href="{{route('states.index')}}">Estados</a>
                     </li>
                 </ul>
                 <!--PERSONAL-->

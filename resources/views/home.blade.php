@@ -20,5 +20,5 @@
         </div>
     </div>
 </div> -->
-@include('layouts.incidencies')
+@include('incidencies.personalLayouts.incidencies')
 @endsection
