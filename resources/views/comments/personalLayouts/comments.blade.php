@@ -31,7 +31,7 @@
         </div>
     @else
         <div class="container">
-            <h3>Aún no hay comentarios!</h3>
+            <h3 style="text-align: center;">Aún no hay comentarios!</h3>
         </div>
     @endif
 @else
