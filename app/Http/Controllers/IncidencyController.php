@@ -65,10 +65,14 @@ class IncidencyController extends Controller
      */
     public function edit(Incidency $incidency)
     {
+        if(Auth::user()->department->id == $incidency->department->id){
         $categories = Category::all();
         $priorities = Priority::orderBy('order','desc')->get();
         $states = State::all();
         return view('incidencies.edit', ['incidency' => $incidency, 'categories' => $categories, 'priorities' => $priorities, 'states' => $states]);
+        }else{
+        return redirect()->route('incidencies.show', $incidency);
+        }
     }
 
     /**

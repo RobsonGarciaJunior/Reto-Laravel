@@ -9,7 +9,7 @@
                     <p>Tiempo Estimado: {{$incidency->estimatedTime}}h</p>
                     <h6>Escrito por: {{$incidency->user->name}} a las {{$incidency->created_at}}h</h6>
             </div>
-            @if(Auth::check())
+            @if(Auth::check() && Auth::user()->id == $incidency->user->id)
             <div class="btn-toolbar" style="display: inline; justify-content: space-between;" data-toggle="buttons">
                 <a class="btn btn-warning btn-sm" href="{{route('incidencies.edit',$incidency)}}" role="button">Editar</a>
             </div>

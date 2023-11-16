@@ -1,4 +1,3 @@
-<h5>Incidencias</h5>
 @for ($i = 0; $i < 5; $i++)
 <ul>
     @if(isset($items->incidencies[$i]))

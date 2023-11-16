@@ -68,7 +68,7 @@ Route::controller(CategoryController::class)->group(function () {
 
 Route::controller(IncidencyController::class)->group(function () {  
     Route::get('/incidencies', 'index')->name('incidencies.index');
-Route::get('/incidencies/{incidency}', 'show')->name('incidencies.show');
+    Route::get('/incidencies/{incidency}', 'show')->name('incidencies.show');
 })->withoutMiddleware([Auth::class]);
 
 Route::controller(PriorityController::class)->group(function () {  
