@@ -39,6 +39,6 @@
 @endif
 @if(Auth::check())
     @if(Auth::user()->departmentId == $incidency->departmentId)
-        @include('comments.FormCreationEdition')
+        @include('comments.personalLayouts.FormCreationEdition')
     @endif
 @endif

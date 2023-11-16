@@ -1,5 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<p>{{$priority->name}}</p>
-<p>{{$priority->order}}</p>
+@include('layouts.showLayout',['item' => $priority, 'item_edit_path'=>'priorities.edit'])
 @endsection

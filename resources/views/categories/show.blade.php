@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<p>{{$category->name}}</p>
+@include('layouts.showLayout',['item' => $category, 'item_edit_path'=>'categories.edit'])
 @endsection

@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<p>{{$state->name}}</p>
+@include('layouts.showLayout',['item' => $state, 'item_edit_path'=>'states.edit'])
 @endsection

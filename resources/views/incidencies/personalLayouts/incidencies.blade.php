@@ -41,10 +41,10 @@
                     <table class="table table-striped">
                         <thead  class="table-dark">
                             <th>
-                                Categoria
-                            </th>
-                            <th>
                                 Departamento
+                            </th>    
+                            <th>
+                                Categoria
                             </th>
                             <th>
                                 Usuario
@@ -60,15 +60,15 @@
                             </th>
                         </thead>
                         <tbody class="table-group-divider fixed">
+                            <td>
+                                <a href="{{route('departments.show',$incidency->department)}}"> {{$incidency->department->name}}</a>
+                            </td>
                             <td>             
                                 @if($incidency->category == null)
                                     Categoria --
                                 @else
                                     <a href="{{route('categories.show',$incidency->category)}}">{{$incidency->category->name}}</a>
                                 @endif
-                            </td>
-                            <td>
-                                <a href="{{route('departments.show',$incidency->department)}}"> {{$incidency->department->name}}</a>
                             </td>
                             <td>                           
                             {{$incidency->user->name}}

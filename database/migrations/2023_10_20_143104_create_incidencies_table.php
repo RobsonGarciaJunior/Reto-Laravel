@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('incidencies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('text');
+            $table->string('text', 500);
             $table->integer('estimatedTime');
             $table->unsignedBigInteger('categoryId')->nullable();
             $table->foreign('categoryId')->references('id')->on('categories')->onDelete('set null');
