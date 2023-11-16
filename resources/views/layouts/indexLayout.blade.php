@@ -51,7 +51,7 @@
                         </td>
                     </tbody>
                 </table>
-                <p>Escrito el {{$item->created_at}}</p>   
+                <p style="text-align: end;">Escrito el {{$item->created_at}}</p>   
             </div>               
         @endforeach
     </div>

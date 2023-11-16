@@ -2,8 +2,11 @@
     <span style="padding: 1em; display: flex; justify-content: space-between;">
         <div style="display: flex; flex-flow: column nowrap;">    
             <h1>{{$item->name}}</h1>
+            <p>Incidencias</p>
             @if($item->incidencies()->exists())
                 @include('layouts.incidencyList',['items'=> $item])
+            @else
+                <p>0</p>
             @endif
         </div>
         @if(Auth::check())

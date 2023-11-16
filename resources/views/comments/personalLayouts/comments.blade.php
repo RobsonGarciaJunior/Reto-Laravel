@@ -1,7 +1,7 @@
 @if(Auth::check())
     @if(count($comments) > 0)
         <div class="container">
-            <h3 style="text-align: center;">Comentarios</h3>
+            <h5 style="text-align: center;">Comentarios</h5>
             <ul class="list-group">
                 {{--esto es un comentario: recorremos el listado de departamentos--}}
                 @foreach ($comments as $comment)
@@ -9,9 +9,10 @@
                     <li class="list-group-item">
                         <h3 class="list-group-item-heading">{{$comment->user->name}}</h3>
                         <!-- <a href="{{route('comments.show', $comment)}}"></a> -->
-                        Escrito el {{$comment->created_at}}
+                        
                         <p>{{$comment->text}}</p>
                         <p>Tiempo usado: {{$comment->usedTime}}h</p>
+                        <p style="text-align: end;">Escrito el {{$comment->created_at}}</p>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             @if(Auth::user()->id == $comment->user->id)
                                 <a class="btn btn-warning btn-sm" href="{{route('comments.edit',$comment)}}" role="button">Editar</a>
@@ -31,11 +32,11 @@
         </div>
     @else
         <div class="container">
-            <h3 style="text-align: center;">Aún no hay comentarios!</h3>
+            <h5 style="text-align: center;">Aún no hay comentarios</h5>
         </div>
     @endif
 @else
-    <p style="text-align: center;">Necesitas estar logueado para ver lo comentarios!</p>
+    <a style=" display: block; text-align: center; color: red;" href="{{ route('login') }}"><h5>Necesitas estar logueado para ver lo comentarios</h5></a>
 @endif
 @if(Auth::check())
     @if(Auth::user()->departmentId == $incidency->departmentId)
