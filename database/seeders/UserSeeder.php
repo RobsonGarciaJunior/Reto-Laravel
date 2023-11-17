@@ -46,5 +46,13 @@ class UserSeeder extends Seeder
             'departmentId' => 1,
             'created_at' => now(),
         ]);
+        DB::table('users')->insert([
+            'name' => 'Pedro Herrero',
+            'email' => 'email@5',
+            'email_verified_at' => null,
+            'password' => Hash::make('password5'),
+            'departmentId' => 3,
+            'created_at' => now(),
+        ]);
     }
 }
