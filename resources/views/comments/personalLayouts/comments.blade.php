@@ -21,7 +21,7 @@
                                 <form action="{{route('comments.destroy',$comment)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Delete
+                                    <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Borrar
                                     </button>
                                 </form>
                             @endif

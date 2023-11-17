@@ -24,7 +24,7 @@
                                     <form action="{{route($item_destroy_path,$item)}}" method="POST" enctype="multipart/form-data" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Delete
+                                        <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Borrar
                                         </button>
                                     </form>
                                 @endif
@@ -33,7 +33,7 @@
                             <form action="{{route($item_destroy_path,$item)}}" method="POST" enctype="multipart/form-data" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Delete
+                                <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Borrar
                                 </button>
                             </form>
                         @endif
