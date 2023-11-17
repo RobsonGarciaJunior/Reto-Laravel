@@ -34,7 +34,7 @@
                 pero como es la creada automaticamente con Blade prefiero no modificar-->
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a @if(Route::currentRouteName() == 'departments.index')
+                        <a @if(Route::currentRouteName() == 'departments.index' || Route::currentRouteName() == 'departments.show')
                             class="nav-link active"
                         @else
                             class="nav-link"
@@ -42,7 +42,7 @@
                         href="{{route('departments.index')}}">Departamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a @if(Route::currentRouteName() == 'categories.index')
+                        <a @if(Route::currentRouteName() == 'categories.index' || Route::currentRouteName() == 'categories.show')
                             class="nav-link active"
                         @else
                             class="nav-link"
@@ -50,7 +50,7 @@
                         href="{{route('categories.index')}}">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a @if(Route::currentRouteName() == 'incidencies.index')
+                        <a @if(Route::currentRouteName() == 'incidencies.index' || Route::currentRouteName() == 'incidencies.show')
                             class="nav-link active"
                         @else
                             class="nav-link"
@@ -58,7 +58,7 @@
                         href="{{route('incidencies.index')}}">Incidencias</a>
                     </li>
                     <li class="nav-item">
-                        <a @if(Route::currentRouteName() == 'priorities.index')
+                        <a @if(Route::currentRouteName() == 'priorities.index' || Route::currentRouteName() == 'priorities.show')
                             class="nav-link active"
                         @else
                             class="nav-link"
@@ -66,7 +66,7 @@
                         href="{{route('priorities.index')}}">Prioridades</a>
                     </li>
                     <li class="nav-item">
-                        <a @if(Route::currentRouteName() == 'states.index')
+                        <a @if(Route::currentRouteName() == 'states.index' || Route::currentRouteName() == 'states.show')
                             class="nav-link active"
                         @else
                             class="nav-link"

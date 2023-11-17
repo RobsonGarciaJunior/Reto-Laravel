@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'name' => 'Usuario1',
+            'name' => 'Robson Garcia Junior',
             'email' => 'email@1',
             'email_verified_at' => null,
             'password' => Hash::make('password1'),
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('users')->insert([
-            'name' => 'Usuario2',
+            'name' => 'Mario Gonzalez',
             'email' => 'email@2',
             'email_verified_at' => null,
             'password' => Hash::make('password2'),
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('users')->insert([
-            'name' => 'Usuario3',
+            'name' => 'Laura Ortega',
             'email' => 'email@3',
             'email_verified_at' => null,
             'password' => Hash::make('password3'),
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('users')->insert([
-            'name' => 'Usuario4',
+            'name' => 'Leire Pérez',
             'email' => 'email@4',
             'email_verified_at' => null,
             'password' => Hash::make('password4'),
