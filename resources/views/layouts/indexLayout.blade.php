@@ -19,12 +19,15 @@
                         <!-- FIXME Aqui se repite un poco el codigo ya que tengo que comprobar si vengo de departamento, que no pueda borrar el departamento si existen incidenias relacionadas-->
                         @if(Route::currentRouteName() == 'departments.index')
                             @if(!$item->incidencies()->exists())
-                            <form action="{{route($item_destroy_path,$item)}}" method="POST" enctype="multipart/form-data" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Delete
-                                </button>
-                            </form>
+                            <!-- FIXME Deberia hacer una comprobacion OR en vez de separarlos en dos ifs pero no funciona bien-->
+                                @if(!$item->users()->exists())
+                                    <form action="{{route($item_destroy_path,$item)}}" method="POST" enctype="multipart/form-data" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure?')">Delete
+                                        </button>
+                                    </form>
+                                @endif
                             @endif
                         @else
                             <form action="{{route($item_destroy_path,$item)}}" method="POST" enctype="multipart/form-data" style="display: inline;">
